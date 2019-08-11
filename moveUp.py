@@ -8,17 +8,20 @@ nixRoot=['','home']
 if(len(sys.argv) > 2 ):
     print("too many arguments, only provide one path under quotation marks")
     sys.exit()
+if(!sys.argv[1]):
+    print('no argument provided')
+    sys.exit()
+    
 try:
     path=str(sys.argv[1])
     pathHelper=path.split(os.sep)
-    pathHelper=winHelper[:2]
+    pathHelper=pathHelper[:2]
     if(os.name=='nt' and pathHelper != winRoot ):
-        raise ValueError('The path must not be outside of the users directory')
+        raise ValueError('The path must not be outside of the Users directory')
     if(os.name=='posix' and pathHelper != nixRoot):
         raise ValueError('The path must not be outside of the home folder')
 except:
-    print('no argument provided')
-    sys.exit()
+    print("fail while checking for home/Users directory")
 
 try:
     os.chdir(path)
