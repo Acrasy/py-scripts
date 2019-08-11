@@ -8,7 +8,7 @@ nixRoot=['','home']
 if(len(sys.argv) > 2 ):
     print("too many arguments, only provide one path under quotation marks")
     sys.exit()
-if(!sys.argv[1]):
+if not(sys.argv[1]):
     print('no argument provided')
     sys.exit()
     
