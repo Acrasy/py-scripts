@@ -6,7 +6,7 @@ nixRoot=['','home']
 
 #Input of working directory and checks if legit
 if(len(sys.argv) > 2 ):
-    print("too many arguments, only provide one path under quotation marks")
+    print("too many arguments, only provide one path")
     sys.exit()
 if not(sys.argv[1]):
     print('no argument provided')
@@ -47,6 +47,6 @@ for folder,subfolder,files in os.walk(path):
         preSub=os.path.join(folder,k).split(os.sep)
         if(len(preSub)>length+1):                      #length +1 because of empty space before root /
             os.rmdir(os.sep.join(preSub))              #rmdir already checks for empty folder
-            print('empty directories removed')
+            print('empty directories for '+ str(k) +'removed')
 
 print('program finished')
