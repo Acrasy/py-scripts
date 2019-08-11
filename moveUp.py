@@ -18,12 +18,14 @@ try:
         raise ValueError('The path must not be outside of the home folder')
 except:
     print('no argument provided')
+    sys.exit()
 
 try:
     os.chdir(path)
     print('the starting directory is: '+str(os.getcwd()))
 except:
     print('no such directory')
+    sys.exit()
 
 #starting to walk / move / remove
 
