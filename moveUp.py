@@ -31,8 +31,13 @@ print('files in lvl 1 folders moved')
 for folder,subfolder,files in os.walk(path):
     for k in subfolder:
         preSub=os.path.join(folder,k).split('/')
-        if(len(preSub)>length+1):                   #length +1 because of empty space before root /
-            os.rmdir('/'.join(preSub))              #rmdir already checks for empty folder
-            print('empty directories removed')
+        if(len(preSub)>length+1):                   	#length +1 because of empty space before root /
+			try:
+				os.rmdir('/'.join(preSub))              #rmdir already checks for empty folder
+				print('empty directories removed')
+			except:
+				print("Directory "+str(preSub)+" not empty.")
+				for files in os.walk(preSub):
+        		os.rename(os.path.join(folder,j),(os.path.join('/'.join(dest),j)))
 
 print('program finished')
