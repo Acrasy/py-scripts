@@ -32,6 +32,7 @@ except:
     sys.exit()
 
 #for root,artist, album, song in os.walk(path):
+
 for artist in os.listdir(path):
 	for album in os.listdir(path+"/"+str(artist)):
 		for title in os.listdir(path+"/"+str(artist)+"/"+str(album)):
