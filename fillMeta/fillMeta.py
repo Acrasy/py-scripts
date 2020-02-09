@@ -15,8 +15,8 @@ if not(sys.argv[1]):
 
 try:
     path=str(sys.argv[1])
-    pathHelper=path.split(os.sep)
-    pathHelper=pathHelper[:2]
+    pathHelper=path.split(os.sep)[:2]
+
     if(os.name=='nt' and pathHelper != winRoot ):
         raise ValueError('The path must not be outside of the Users directory')
     if(os.name=='posix' and pathHelper != nixRoot):
@@ -30,3 +30,15 @@ try:
 except:
     print('no such directory')
     sys.exit()
+
+#for root,artist, album, song in os.walk(path):
+for artist in path:
+	for album in artist:
+		for title in song:
+			print(title)
+			print(album)
+			print(artist)
+			#currentTitle = eyed3.load(title)
+			#currentTitle.tag.artist	= artist
+			#currentTitle.tag.album		= album
+			#currentTitle.tag.title		= title
