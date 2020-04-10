@@ -32,13 +32,16 @@ except:
     sys.exit()
 
 #for root,artist, album, song in os.walk(path):
-for artist in path:
-	for album in artist:
-		for title in song:
-			print(title)
-			print(album)
-			print(artist)
-			#currentTitle = eyed3.load(title)
-			#currentTitle.tag.artist	= artist
-			#currentTitle.tag.album		= album
-			#currentTitle.tag.title		= title
+for artist in os.listdir(path):
+	for album in os.listdir(path+"/"+str(artist)):
+		for title in os.listdir(path+"/"+str(artist)+"/"+str(album)):
+			#print(artist)
+			#print(album)
+			#print(title[0:-4].strip())
+			currentTitle = eyed3.load(path+"/"+str(artist)+"/"+str(album)+'/'+str(title))
+			if artist == title[:len(artist)]:
+				title=title[len(artist):].strip("_-.")
+			currentTitle.tag.artist	=	str(artist)
+			currentTitle.tag.album	=	str(album)
+			currentTitle.tag.title	= 	str(title[0:-4])
+			currentTitle.tag.save(version=eyed3.id3.ID3_V2_4)
