@@ -39,7 +39,9 @@ for artist in os.listdir(path):
 			#print(album)
 			#print(title[0:-4].strip())
 			currentTitle = eyed3.load(path+"/"+str(artist)+"/"+str(album)+'/'+str(title))
+			if artist == title[:len(artist)]:
+				title=title[len(artist):].strip("_-.")
 			currentTitle.tag.artist	=	str(artist)
 			currentTitle.tag.album	=	str(album)
 			currentTitle.tag.title	= 	str(title[0:-4])
-			currentTitle.tag.save()
+			currentTitle.tag.save(version=eyed3.id3.ID3_V2_4)
